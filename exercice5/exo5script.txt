@@ -6,6 +6,15 @@ for i in {1..100}; do
     echo $(( $RANDOM % 100 + 1 ))
 done
 
+#!/bin/bash : Cela s'appelle un "shebang". Il indique au système d'exploitation que ce script doit être exécuté dans l'interpréteur Bash. Il doit être la première ligne du script.
+for i in {1..100}; do : Ceci est une boucle for. Elle répète les instructions à l'intérieur du bloc do ... done 100 fois. La variable i prend successivement les valeurs de 1 à 100, bien qu'elle ne soit pas utilisée directement dans le bloc.
+echo $(( $RANDOM % 100 + 1 )) :
+$RANDOM : C'est une variable spéciale en Bash qui génère un nombre aléatoire à chaque fois qu'elle est appelée.
+% 100 : C'est l'opérateur modulo. Il divise $RANDOM par 100 et retourne le reste, ce qui donne un résultat entre 0 et 99.
++ 1 : Ajoute 1 au résultat du modulo. Cela transforme la plage de 0-99 en 1-100.
+echo : Cette commande affiche le résultat sur la sortie standard (en général, la console).
+done : Indique la fin de la boucle for.
+
 script_analyse.sh
 
 #!/bin/bash
@@ -32,6 +41,20 @@ echo "Somme : $sum"
 echo "Moyenne : $average"
 echo "Minimum : $min"
 echo "Maximum : $max"
+
+sum=0, min=101, max=0, count=0 : Initialisation des variables. sum stocke la somme totale des nombres, min et max sont initialement fixés à des valeurs au-delà des extrêmes attendus pour s'assurer qu'ils soient correctement mis à jour, et count compte le nombre de nombres lus.
+while read number; do : Ceci est une boucle while qui lit des nombres de l'entrée standard (données passées au script). Pour chaque nombre lu, le bloc à l'intérieur de do ... done est exécuté.
+sum=$((sum + number)) : Ajoute le nombre lu à la variable sum.
+if [ "$number" -lt "$min" ]; then : Teste si le nombre actuel est inférieur au minimum actuel. Si c'est le cas, la condition est vraie, et le bloc à l'intérieur de if ... fi est exécuté.
+min=$number : Met à jour le minimum avec le nombre actuel.
+if [ "$number" -gt "$max" ]; then : Teste si le nombre actuel est supérieur au maximum actuel. Si c'est le cas, le bloc à l'intérieur de if ... fi est exécuté.
+max=$number : Met à jour le maximum avec le nombre actuel.
+((count++)) : Incrémente le compteur de nombres.
+average=$(echo "$sum / $count" | bc -l) : Calcule la moyenne. echo "$sum / $count" envoie l'expression à bc -l, un calculateur en ligne de commande qui supporte les nombres à virgule flottante, pour effectuer la division.
+echo "Somme : $sum" : Affiche la somme des nombres.
+echo "Moyenne : $average" : Affiche la moyenne calculée.
+echo "Minimum : $min" : Affiche la valeur minimale trouvée.
+echo "Maximum : $max" : Affiche la valeur maximale trouvée.
 
 script_integration.sh
 
