@@ -1,0 +1,10 @@
+!/bin/bash
+
+echo "Enter the distance in centimeters: "
+read cm
+
+meters=$(($cm / 100))
+cm=$(($cm % 100))
+
+echo "Total meters: $meters"
+echo "centimeters: $cm"

@@ -1,0 +1,36 @@
+#!/bin/bash
+
+if [ "$#" -ne 2 ]; then
+    echo "Erreur : Le nombre d'arguments est incorrect."
+    exit 1
+fi
+
+source=$1
+destination=$2
+
+if [ ! -r "$1" ]; then
+    echo "Erreur : Le fichier source n'existe pas ou n'est pas lisible."
+    exit 1
+fi
+
+if [ ! -f "$1" ]; then
+    echo "Erreur : Le fichier source n'est pas un fichier ordinaire."
+    exit 1
+fi
+
+if [ -e "$2" ]; then
+    echo "Erreur : Le fichier de destination existe déjà."
+    exit 1
+fi
+
+if [ ! -w "$(dirname "$2")" ]; then
+    echo "Erreur : Le répertoire de destination n'est pas accessible en écriture."
+    exit 1
+fi
+
+if cp "$source" "$2"; then
+    echo "Copie réussie."
+else
+    echo "Erreur veuillez réessayer."
+    exit 1
+fi

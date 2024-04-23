@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo "Vous pouvez écrire ou quitter avec STOP."
+count=0
+filename="result.txt"
+
+> "$filename"  
+while true; do  # finit jamais
+    echo -n "Entrez un texte : "
+    read line # lit 
+    if [[ "$line" == "STOP" ]]; then  
+        break  # casse la boucle
+    fi
+    echo "$line" >> "$filename"  # ecrit dans e fichier vide
+    ((count++))  
+done
+
+echo "Nombre de lignes ecrites : $count"  

@@ -1,0 +1,58 @@
+#!/bin/bash
+
+
+#créer un menu 
+afficherMenu(){
+echo "1) ajouter une nouvelle fiche"
+echo "2) rechercher une fiche"
+echo "3) détruire une fiche"
+echo "4) modifier une fiche"
+echo "5) lister l'annuaire"
+echo "6) Finie"
+}
+
+afficherMenu()
+echo "
+read choix
+
+$choix
+
+1)
+#créer une nouvelle fiche
+if [ $# -eq 0 ]; then
+echo "taper votre nom"
+read nom
+echo"taper votre tel
+read tel
+echo "Nom: $nom, Téléphone: $tel" >> menu_agenda.txt
+
+echo fiche ajouté
+
+2)
+#rechercher une fiche 
+echo "Entrez le nom à rechercher: "
+     read recherche
+       grep -i "$recherche" menu_agenda/fiche.txt
+
+3)
+#détruire une fiche 
+echo "Entrez le nom de la fiche à détruire: "
+read nom_fiche
+rm
+
+4)
+#modifier une fiche 
+echo "Entrez le nom de la fiche à modifier: "
+            read nom_fiche
+
+5)
+#lister annuaire 
+
+6)
+"finie
+
+exit 0
+#!/bin/bash
+
+
+

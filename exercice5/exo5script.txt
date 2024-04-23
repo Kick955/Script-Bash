@@ -1,0 +1,43 @@
+script_process.sh
+
+#!/bin/bash
+
+for i in {1..100}; do
+    echo $(( $RANDOM % 100 + 1 ))
+done
+
+script_analyse.sh
+
+#!/bin/bash
+
+sum=0
+min=101
+max=0
+count=0
+
+while read number; do
+    sum=$((sum + number))
+    if [ "$number" -lt "$min" ]; then
+        min=$number
+    fi
+    if [ "$number" -gt "$max" ]; then
+        max=$number
+    fi
+    ((count++))
+done
+
+average=$(echo "$sum / $count" | bc -l)
+
+echo "Somme : $sum"
+echo "Moyenne : $average"
+echo "Minimum : $min"
+echo "Maximum : $max"
+
+script_integration.sh
+
+#!/bin/bash
+
+
+./script_process.sh | ./script_analyse.sh
+
+ps

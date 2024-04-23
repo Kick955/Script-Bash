@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for user in "$@"
+do
+    awk -F':' -v u="$user" '$1 == u {print $1 ":" $6 ":" $7}' /etc/passwd
+done
