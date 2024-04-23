@@ -1,3 +1,20 @@
+Commandes et Syntaxe
+if et fi:
+if est utilisé pour introduire une condition. Le bloc de code qui suit est exécuté si la condition est vraie. fi marque la fin de ce bloc conditionnel. C'est la façon de fermer la structure conditionnelle en Bash, semblable à } en C ou Java.
+cp:
+La commande cp est utilisée pour copier des fichiers ou des répertoires. Dans ce script, cp "$source" "$2" tente de copier le fichier de l'emplacement source vers l'emplacement de destination.
+Options de test:
+-ne: Teste si deux nombres ne sont pas égaux.
+-r: Vérifie si un fichier est lisible.
+-f: Vérifie si le fichier est un fichier ordinaire.
+-e: Vérifie si un fichier existe.
+-w: Vérifie si un fichier ou un répertoire est accessible en écriture.
+
+$1, $2, $3, etc., sont des variables spéciales en Bash qui représentent respectivement le premier, le deuxième, le troisième argument, et ainsi de suite, passés à un script lors de son exécution.
+source=$1 assigne la valeur du premier argument passé au script à la variable source.
+destination=$2 assigne la valeur du deuxième argument passé au script à la variable destination.
+
+
 #!/bin/bash
 
 if [ "$#" -ne 2 ]; then
